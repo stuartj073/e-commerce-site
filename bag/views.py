@@ -39,7 +39,7 @@ def add_to_bag(request, item_id):
         else:
             bag[item_id] = quantity
             messages.success(request, f'Added {product.name} to bag')
-    
+
     request.session['bag'] = bag
     return redirect(redirect_url)
 
@@ -49,7 +49,7 @@ def adjust_bag(request, item_id):
 
     quantity = request.POST.get('quantity')
     size = None
-    
+
     if 'product_size' in request.POST:
         size = request.POST['size']
     bag = request.session.get('bag', {})
@@ -60,10 +60,10 @@ def adjust_bag(request, item_id):
             messages.success(request, f'Removed {size.upper()} {product.name} from your bag')
         else:
             del bag[item_id]['items_by_size'][size]
-    
+
     else:
         if quantity > 0:
-            bag[item_id] = quantity 
+            bag[item_id] = quantity
             messages.success(request, f'Added size {product.name} to your bag')
 
         else:
@@ -79,7 +79,7 @@ def remove_from_bag(request, item_id):
 
     try:
         size = None
-        
+  
         if 'product_size' in request.POST:
             size = request.POST['size']
         bag = request.session.get('bag', {})
@@ -88,7 +88,7 @@ def remove_from_bag(request, item_id):
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
-        
+ 
         else:
             bag.pop(item_id)
 

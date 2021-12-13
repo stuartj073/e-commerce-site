@@ -21,7 +21,7 @@ def update_on_save(sender, instance, created, **kwargs):
 #  decorater ensures that we are receiving post deletes
 #  signals from the OrderLineItem model
 @receiver(post_delete, sender=OrderLineItem)
-def delete_on_save(sender, instance, **kwargs):
+def update_on_delete(sender, instance, **kwargs):
     #  created by param removed as it isn't
     #  sent by this signal
     """

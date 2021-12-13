@@ -110,7 +110,7 @@ def checkout_success(request, order_number):
                 email will be sent to {order.email}.')
 
     if 'bag' in request.session:
-        del request.session[;bag']
+        del request.session['bag']
 
     template = 'checkout/checkout_success.html'
     context = {

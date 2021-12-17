@@ -55,7 +55,7 @@ form.addEventListener('submit', function(ev){
         } else {
             // The payment was successful
             if (result.paymentIntent.status == 'succeeded'){
-                form.submit()
+                // form.submit()
             }
         }
     })
